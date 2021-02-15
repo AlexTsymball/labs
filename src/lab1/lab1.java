@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class lab1 {
-
+    
     static int[] selection = {766, 137, 105, 124, 63, 356, 67, 113, 325,
             10, 291, 271, 199, 90, 146, 461, 48, 305,
             150, 900, 640, 120, 23, 403, 36, 321, 102,
@@ -27,9 +27,15 @@ public class lab1 {
         average();
         Arrays.sort(selection);
 //        System.out.println(Arrays.toString(selection));
+        System.out.println();
         ArrayList<ArrayList<Double>> intervalsArray = intervalBreakdown();
+        System.out.println();
+        System.out.println("Статистична щільність розподілу ймовірності відмови:");
         double[] f = fiCalculate(intervalsArray);
+        System.out.println();
+        System.out.println("Ймовірність безвідмовної роботи пристрою:");
         double[] P = PCalculate(f);
+        System.out.println();
         double T = percent(P);
         double Ptime = pTime(f, timeWork);
         System.out.println("P("+ timeWork + ") = " + Ptime);
@@ -59,7 +65,7 @@ public class lab1 {
                 break;
             }
         }
-        result = 1 - sum;
+        result = (1 - sum);
         return result;
     }
 
@@ -69,11 +75,11 @@ public class lab1 {
         for (int i = 0; i < p.length-1; i++) {
             if(p[i] >= gama && p[i+1] <= gama){
                 d = (p[i] - gama)/(p[i] - p[i+1]);
-                result = i + lengthOfInterval*d;
+                result = (i + lengthOfInterval*d);
                 break;
             }
         }
-//        System.out.println(d);
+        System.out.println("d = " + (d));
         System.out.println("Ty = " + result);
         return result;
     }
@@ -83,9 +89,12 @@ public class lab1 {
         result[0] = 1.0;
         double sum = 0;
         for (int i = 0; i < f.length; i++) {
-            sum += f[i] * lengthOfInterval;
+            sum += (f[i] * lengthOfInterval);
             result[i + 1] = (1 - sum);
 
+        }
+        for (int i = 0; i < result.length; i++) {
+            System.out.println("для " + (i) + "-го інтревалу P(" + i*lengthOfInterval + ") : "  + result[i]);
         }
 //        System.out.println(Arrays.toString(result));
         return result;
@@ -94,11 +103,19 @@ public class lab1 {
     private static double[] fiCalculate(ArrayList<ArrayList<Double>> intervalsArray) {
         double[] result = new double[10];
         for (int i = 0; i < intervalsArray.size(); i++) {
-            result[i] = (double) intervalsArray.get(i).size() / (selection.length * lengthOfInterval);
+//            System.out.println("intervalsArray.get(i).size() " + intervalsArray.get(i).size() );
+//            System.out.println("selection.length " + selection.length);
+//            System.out.println("lengthOfInterval " + lengthOfInterval);
+            result[i] = ((double) intervalsArray.get(i).size() / (selection.length * lengthOfInterval));
+        }
+        for (int i = 0; i < result.length; i++) {
+            System.out.println("для " + (i+1) + "-го інтревалу f" + (i+1) + ": "  + result[i]);
         }
 //        System.out.println(Arrays.toString(result));
         return result;
     }
+
+
 
     private static ArrayList<ArrayList<Double>> intervalBreakdown() {
         ArrayList<ArrayList<Double>> result = new ArrayList<>();
@@ -107,6 +124,7 @@ public class lab1 {
         }
         int max = selection[selection.length - 1];
         lengthOfInterval = (double) max / 10;
+        System.out.println("Довжина одного інтервалу буде дорівнювати " + lengthOfInterval);
         int step = 1;
         for (int i = 0; i < selection.length; i++) {
             if ((double) selection[i] <= lengthOfInterval * step) {
@@ -116,9 +134,12 @@ public class lab1 {
                 result.get(step - 1).add((double) selection[i]);
             }
         }
-//        for (int i = 0; i < result.size(); i++) {
-//            System.out.println(result.get(i));
-//        }
+        System.out.println();
+        System.out.println("Інтервали:");
+        for (int i = 0; i < result.size(); i++) {
+            System.out.println(i+1 + "-й інтревал від " + i*lengthOfInterval + " до " + (i+1)*lengthOfInterval +
+                    ":" + result.get(i));
+        }
         return result;
     }
 
