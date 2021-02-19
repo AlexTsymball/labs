@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class lab1 {
-    
+
     static int[] selection = {766, 137, 105, 124, 63, 356, 67, 113, 325,
             10, 291, 271, 199, 90, 146, 461, 48, 305,
             150, 900, 640, 120, 23, 403, 36, 321, 102,
@@ -24,6 +24,15 @@ public class lab1 {
     static int index;
 
     public static void main(String[] args) {
+        if(selection.length == 0){
+            System.out.println("Довжина масиву = 0");
+            return;
+        } else if(gama > 1 || gama < 0 ){
+            System.out.println("gama повинна бути від 0 до 1");
+            return;
+        }
+
+
         average();
         Arrays.sort(selection);
 //        System.out.println(Arrays.toString(selection));
@@ -52,6 +61,10 @@ public class lab1 {
     }
 
     private static double pTime(double[] f, int time) {
+        if(time > selection[selection.length - 1]){
+            System.out.println("Час " + time + " виходить за межі вибірки");
+            return 0;
+        }
         double result;
         double sum = 0;
         int step = 1;
