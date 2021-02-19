@@ -17,7 +17,7 @@ public class lab1 {
             89, 452, 161, 478, 85, 443, 32, 162, 633,
             249, 132, 283, 76, 548, 136, 322, 107};
     static double gama = 0.84;
-    static int timeWork = 511;
+    static int timeWork = -511;
     static int timeFailurs = 488;
 
     static double lengthOfInterval;
@@ -32,6 +32,7 @@ public class lab1 {
             return;
         }else if( timeWork < 0 || timeFailurs < 0){
             System.out.println("Час не може бути менше 0");
+            return;
         }
 
 
