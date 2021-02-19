@@ -90,8 +90,9 @@ public class lab1 {
         double d = 0;
         for (int i = 0; i < p.length-1; i++) {
             if(p[i] >= gama && p[i+1] <= gama){
-                d = (p[i] - gama)/(p[i] - p[i+1]);
-                result = (i + lengthOfInterval*d);
+//                System.out.println(i);
+                d = ( gama - p[i])/(p[i+1] - p[i]);
+                result = ((i)*lengthOfInterval + lengthOfInterval*d);
                 break;
             }
         }
