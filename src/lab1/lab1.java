@@ -30,6 +30,8 @@ public class lab1 {
         } else if(gama > 1 || gama < 0 ){
             System.out.println("gama повинна бути від 0 до 1");
             return;
+        }else if( timeWork < 0 || timeFailurs < 0){
+            System.out.println("Час не може бути менше 0");
         }
 
 
@@ -61,7 +63,7 @@ public class lab1 {
     }
 
     private static double pTime(double[] f, int time) {
-        if(time > selection[selection.length - 1]){
+        if(time > selection[selection.length - 1] || time < selection[0]){
             System.out.println("Час " + time + " виходить за межі вибірки");
             return 0;
         }
