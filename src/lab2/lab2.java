@@ -19,6 +19,7 @@ public class lab2 {
             {0, 0, 0, 0, 0, 0}
            };
     static double[] P = {0.66, 0.04, 0.55, 0.63, 0.86, 0.58};
+//    static double[] P = {0.66, 0.04, 0.55, 0.63, 0.86, 0.58, 0.7, 0.02};
 //    static int[][] scheme = {
 //            {0, 1, 1, 0, 0, 0, 0, 0},
 //            {0, 0, 0, 1, 1, 0, 0, 0},
@@ -29,7 +30,7 @@ public class lab2 {
 //            {0, 0, 0, 0, 0, 0, 0, 0},
 //            {0, 0, 0, 0, 0, 0, 0, 0}
 //           };
-//    static double[] P = {0.5,0.6, 0.7, 0.8, 0.85, 0.9, 0.92, 0.94};
+//    static double[] P = {0.5,0.6, 0.7, 0.8, 0.05, 0.9, 0.92, 0.94};
 //        static double[] P = {0.5, 0.6};
     static int t = 10;
     static double Psystem;
@@ -113,8 +114,6 @@ public class lab2 {
                 }
             }
             result.add(Pstate);
-//            double scale = Math.pow(10, 5);
-//            double q = Math.round(Pstate * scale) / scale;
             Psystem += Pstate;
             System.out.println(i + " : Pstate = " + Pstate);
         }
