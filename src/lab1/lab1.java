@@ -5,19 +5,20 @@ import java.util.Arrays;
 
 public class lab1 {
 
-    static int[] selection = {766, 137, 105, 124, 63, 356, 67, 113, 325,
-            10, 291, 271, 199, 90, 146, 461, 48, 305,
-            150, 900, 640, 120, 23, 403, 36, 321, 102,
-            136, 451, 257, 55, 87, 264, 135, 542, 425,
-            54, 148, 188, 387, 133, 193, 524, 161, 179,
-            558, 132, 139, 74, 23, 71, 140, 131, 168,
-            159, 97, 31, 625, 34, 111, 452, 12, 26, 234,
-            543, 252, 269, 10, 228, 143, 40, 120, 237,
-            171, 16, 221, 55, 99, 105, 192, 213, 539, 7,
-            89, 452, 161, 478, 85, 443, 32, 162, 633,
-            249, 132, 283, 76, 548, 136, 322, 107};
+    static int[] selection = {25, 25, 14, 26, 28, 19, 31, 18, 21, 16, 17, 16, 24, 18, 12, 24, 18, 28, 23, 21};
+//    static int[] selection = {766, 137, 105, 124, 63, 356, 67, 113, 325,
+//            10, 291, 271, 199, 90, 146, 461, 48, 305,
+//            150, 900, 640, 120, 23, 403, 36, 321, 102,
+//            136, 451, 257, 55, 87, 264, 135, 542, 425,
+//            54, 148, 188, 387, 133, 193, 524, 161, 179,
+//            558, 132, 139, 74, 23, 71, 140, 131, 168,
+//            159, 97, 31, 625, 34, 111, 452, 12, 26, 234,
+//            543, 252, 269, 10, 228, 143, 40, 120, 237,
+//            171, 16, 221, 55, 99, 105, 192, 213, 539, 7,
+//            89, 452, 161, 478, 85, 443, 32, 162, 633,
+//            249, 132, 283, 76, 548, 136, 322, 107};
     static double gama = 0.84;
-    static int timeWork = 511;
+    static int timeWork = 20;
     static int timeFailurs = 488;
 
     static double lengthOfInterval;
@@ -38,7 +39,7 @@ public class lab1 {
 
         average();
         Arrays.sort(selection);
-//        System.out.println(Arrays.toString(selection));
+        System.out.println(Arrays.toString(selection));
         System.out.println();
         ArrayList<ArrayList<Double>> intervalsArray = intervalBreakdown();
         System.out.println();
@@ -81,6 +82,7 @@ public class lab1 {
                 break;
             }
         }
+        System.out.println(sum);
         result = (1 - sum);
         return result;
     }
@@ -102,7 +104,7 @@ public class lab1 {
     }
 
     private static double[] PCalculate(double[] f) {
-        double[] result = new double[11];
+        double[] result = new double[6];
         result[0] = 1.0;
         double sum = 0;
         for (int i = 0; i < f.length; i++) {
@@ -118,7 +120,7 @@ public class lab1 {
     }
 
     private static double[] fiCalculate(ArrayList<ArrayList<Double>> intervalsArray) {
-        double[] result = new double[10];
+        double[] result = new double[5];
         for (int i = 0; i < intervalsArray.size(); i++) {
 //            System.out.println("intervalsArray.get(i).size() " + intervalsArray.get(i).size() );
 //            System.out.println("selection.length " + selection.length);
@@ -136,11 +138,11 @@ public class lab1 {
 
     private static ArrayList<ArrayList<Double>> intervalBreakdown() {
         ArrayList<ArrayList<Double>> result = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             result.add(new ArrayList<Double>());
         }
         int max = selection[selection.length - 1];
-        lengthOfInterval = (double) max / 10;
+        lengthOfInterval = (double) max / 5;
         System.out.println("Довжина одного інтервалу буде дорівнювати " + lengthOfInterval);
         int step = 1;
         for (int i = 0; i < selection.length; i++) {
